@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 function BookAppointment() {
   const { doctorId, patientId } = useParams();
@@ -119,15 +121,15 @@ function BookAppointment() {
           <button className="flex items-center space-x-2">
             {user && (
               <span className="hidden sm:flex items-center space-x-1 mx-6">
-                <i className="fas fa-wallet text-yellow-400"></i>
-                <span className="text-xl">₹ {user.walletBalance}</span>
+              <span className="text-xl bg-white text-blue-600 px-3  rounded-lg shadow-sm border border-gray-200">
+  ₹ {user.walletBalance}
+</span>
               </span>
             )}
-            <img
-              src="https://via.placeholder.com/40"
-              alt="Profile"
-              className="rounded-full h-10 w-10 border-2 border-white"
-            />
+            <FontAwesomeIcon
+                           className="rounded-full h-4 w-10 border-5 border-white"
+                           icon={faUser}
+                       />
             <span className="hidden sm:block">{user ? user.name : "Guest"}</span>
           </button>
           <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
