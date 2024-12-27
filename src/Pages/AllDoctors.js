@@ -83,7 +83,7 @@ const [user, setUser] = useState(() => {
 
   return (
     <div className="flex flex-col bg-gray-100">
-    {/* Header */}
+   
     <header className="bg-blue-600 text-white py-4 px-6 flex justify-between items-center shadow-md relative z-20">
       <h1 className="text-2xl font-bold">User Dashboard</h1>
       <div className="relative group">
@@ -143,7 +143,7 @@ const [user, setUser] = useState(() => {
       </div>
     </header>
   
-   {/* Banner */}
+
 <div className="w-full h-auto bg-gradient-to-r from-green-400 via-teal-500 to-blue-600 flex items-center justify-center text-white relative overflow-hidden shadow-lg py-6 sm:py-0">
   {/* Background Image */}
   <div className="absolute inset-0 opacity-50 bg-[url('https://source.unsplash.com/1600x900/?healthcare,doctor')] bg-cover bg-center"></div>
@@ -163,7 +163,7 @@ const [user, setUser] = useState(() => {
 </div>
 
   
-    {/* Navbar */}
+  
     <nav className="bg-white h-auto shadow-md py-3 px-6">
       <div className="sm:flex hidden space-x-4">
         {uniqueSpecializations.map((spec, index) => (
@@ -180,7 +180,7 @@ const [user, setUser] = useState(() => {
           </button>
         ))}
       </div>
-      {/* Mobile Toggle */}
+   
       <div className="sm:hidden">
         <select
           className="w-full px-4 py-2 rounded-lg bg-gray-200 focus:ring-2 focus:ring-blue-600"
@@ -195,14 +195,14 @@ const [user, setUser] = useState(() => {
       </div>
     </nav>
   
-    {/* Main Content */}
+  
     <main className="flex-1 p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
   {filteredDoctors.map((doctor) => (
     <div
       key={doctor._id}
       className="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-transform transform hover:scale-105 border border-gray-200"
     >
-      {/* Image Section */}
+   
       <div className="relative w-full h-64 sm:h-72">
         <img
           src={doctor.imageUrl}
@@ -213,13 +213,13 @@ const [user, setUser] = useState(() => {
           {doctor.specialization}
         </div>
       </div>
-      {/* Content Section */}
+    
       <div className="p-4 sm:p-6 space-y-4">
         <h3 className="text-lg sm:text-xl font-bold text-gray-800">
           {doctor.name}
         </h3>
         <div className="flex items-center gap-2">
-          {/* <span className="text-sm font-semibold text-gray-600">Degree:</span> */}
+         
           <span className="text-sm text-gray-600">{doctor.degree}</span>
         </div>
         <div className="flex items-center gap-2">

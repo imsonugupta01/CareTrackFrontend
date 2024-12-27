@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-// Header Component
+
 const Header = ({ onLogout }) => {
   return (
     <header className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10 shadow-lg">
@@ -16,14 +16,14 @@ const Header = ({ onLogout }) => {
   );
 };
 
-// Main AdminProfile Component
+
 function AdminProfile() {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [transactions, setTransactions] = useState([]); // State for transactions
-  const [activeTab, setActiveTab] = useState('doctors'); // State for active tab
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Today's date
+  const [transactions, setTransactions] = useState([]); 
+  const [activeTab, setActiveTab] = useState('doctors'); 
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); 
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function AdminProfile() {
       }
       const data = await response.json();
       setTransactions(data);
-      filterTransactions(data, selectedDate); // Filter transactions for today's date
+      filterTransactions(data, selectedDate); 
     };
 
     fetchDoctors();
@@ -71,8 +71,7 @@ function AdminProfile() {
 
   const navigate=useNavigate();
   const handleLogout = () => {
-    // Handle logout logic here
-    // alert('Logged out');
+
     navigate("/")
     
   };

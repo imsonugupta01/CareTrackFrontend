@@ -50,7 +50,7 @@ function DoctorSignup() {
   };
 
   const handleLogout = () => {
-    // Implement logout logic here, e.g., clearing auth tokens, redirecting, etc.
+   
     alert("Logged out successfully!");
   };
 

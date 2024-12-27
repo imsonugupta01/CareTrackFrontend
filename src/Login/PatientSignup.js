@@ -9,7 +9,7 @@ function PatientSignup() {
     password: '',
   });
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); // useNavigate hook
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,7 +22,7 @@ function PatientSignup() {
     try {
       await axios.post(`${process.env.REACT_APP_ROOT_API_URL}/auth/patientSignup`, formData);
       alert("SignUp successfull")
-      navigate('/patientLogin'); // Navigate to login page after successful signup
+      navigate('/patientLogin'); 
     } catch (error) {
       setMessage(error.response?.data?.message || 'Error signing up');
     }

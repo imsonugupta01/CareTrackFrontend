@@ -31,11 +31,11 @@ function PatientLogin() {
   };
 
   const handleSignUp = () => {
-    navigate('/patientSignup'); // Redirect to the signup page
+    navigate('/patientSignup'); 
   };
 
   const handleAdminLogin = () => {
-    navigate('/adminLogin'); // Redirect to the admin login page
+    navigate('/adminLogin'); 
   };
 
   return (

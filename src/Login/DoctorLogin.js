@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-// Header Component
+
 const Header = ({ onLogout }) => {
   return (
     <header className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 flex justify-between items-center">
@@ -17,7 +17,7 @@ const Header = ({ onLogout }) => {
   );
 };
 
-// Main DoctorLogin Component
+
 function DoctorLogin() {
   const [formData, setFormData] = useState({ email: 'vishalsharma@gmail.com', password: '123456' });
   const [message, setMessage] = useState('');
@@ -41,7 +41,7 @@ function DoctorLogin() {
   };
 
   const handleLogout = () => {
-    // Handle logout logic here
+  
     alert('Logged out');
     navigate('/');
   };

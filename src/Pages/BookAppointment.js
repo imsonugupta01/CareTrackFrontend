@@ -61,13 +61,12 @@ function BookAppointment() {
       const discount = isDiscountApplicable ? 40 : 0;
       const discountedAmount = totalAmount * (1 - discount / 100);
   
-      // Check if wallet balance is sufficient
+      
       if (user?.walletBalance < discountedAmount) {
         alert("Insufficient wallet balance to book the appointment.");
         return;
       }
   
-      // Book the appointment
       const response = await axios.post(`${process.env.REACT_APP_ROOT_API_URL}/payment/make`, {
         patientName: user?.name,
         doctorName: doctor?.name,
@@ -78,7 +77,7 @@ function BookAppointment() {
       });
   
       if (response.status === 201) {
-        // Update wallet balance
+     
         const updatedWalletResponse = await axios.get(
           `${process.env.REACT_APP_ROOT_API_URL}/patient/update/${patientId}/${discountedAmount}`
         );
@@ -88,7 +87,7 @@ function BookAppointment() {
           setIsDiscountApplicable(false);
           setAppointmentHistory((prev) => [...prev, response.data.data]);
   
-          // Update user state with new wallet balance
+       
           const updatedUser = { ...user, walletBalance: updatedWalletResponse.data.walletBalance };
           setUser(updatedUser);
           localStorage.setItem("user", JSON.stringify(updatedUser));

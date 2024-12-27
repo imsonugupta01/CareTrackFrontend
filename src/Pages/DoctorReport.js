@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-// Header Component
 const Header = ({ onLogout }) => {
   return (
     <header className="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 flex justify-between items-center fixed top-0 left-0 right-0 z-10 shadow-lg">
@@ -16,11 +15,11 @@ const Header = ({ onLogout }) => {
   );
 };
 
-// Main DoctorReport Component
+
 function DoctorReport() {
     const [selectedDate, setSelectedDate] = useState(() => {
         const localDate = new Date();
-        const offsetDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000); // Adjust for timezone offset
+        const offsetDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000); 
         return offsetDate.toISOString().split('T')[0];
       });
       
@@ -29,7 +28,6 @@ function DoctorReport() {
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-//   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Today's date
   const [filteredPayments, setFilteredPayments] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
@@ -45,7 +43,7 @@ function DoctorReport() {
         const response = await fetch(`${process.env.REACT_APP_ROOT_API_URL}/doctor/findById/${doctorId}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
-        setDoctor(data); // Set doctor details
+        setDoctor(data); 
       } catch (error) {
         setError(error.message);
       }
@@ -58,7 +56,7 @@ function DoctorReport() {
         const data = await response.json();
         if (data.data && data.data.length > 0) {
           setPayments(data.data);
-          filterPayments(data.data, selectedDate); // Filter payments for today's date
+          filterPayments(data.data, selectedDate); 
         } else {
           setPayments([]);
         }
@@ -84,7 +82,7 @@ function DoctorReport() {
     });
     setFilteredPayments(filtered);
 
-    // Calculate total amount for the day
+   
     const total = filtered.reduce((sum, payment) => {
       const discountAmount = (payment.totalAmount * payment.discount) / 100;
       const finalAmount = payment.totalAmount - discountAmount;

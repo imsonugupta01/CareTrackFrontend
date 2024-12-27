@@ -1,15 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-// Create context
 export const UserContext = createContext();
 
-// Create a provider component
+
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-//   Fetch user data when the app loads and when token changes
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -17,18 +15,18 @@ export const UserProvider = ({ children }) => {
         if (token) {
         console(".")
         } else {
-          setUser(null); // No token, set user to null
+          setUser(null); 
         }
       } catch (err) {
         console.error('Failed to fetch user', err);
         setUser(null);
       } finally {
-        setLoading(false); // Done loading
+        setLoading(false); 
       }
     };
 
     fetchUser();
-  }, []); // Run only once when component mounts
+  }, []); 
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
