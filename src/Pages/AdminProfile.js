@@ -81,15 +81,15 @@ function AdminProfile() {
   
   const renderDoctors = () => (
     <div className="mt-4">
-      <h2 className="text-2xl font-bold ">Doctors List</h2>
-      <table className="min-w-full bg-white border border-gray-300 mt-4 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold">Doctors List</h2>
+      <table className="min-w-full bg-white border border-gray-300 mt-4 rounded-lg shadow-md overflow-x-auto">
         <thead className="bg-gradient-to-r from-blue-500 to-blue-700 text-white">
           <tr>
-            <th className="py-2 px-4 border-b">Name</th>
-            <th className="py-2 px-4 border-b">Specialization</th>
-            <th className="py-2 px-4 border-b">Email</th>
-            <th className="py-2 px-4 border-b">Fee</th>
-            <th className="py-2 px-4 border-b">View Details</th>
+            <th className="py-2 px-4 border-b text-left">Name</th>
+            <th className="py-2 px-4 border-b text-left">Specialization</th>
+            <th className="py-2 px-4 border-b text-left">Email</th>
+            <th className="py-2 px-4 border-b text-left">Fee</th>
+            <th className="py-2 px-4 border-b text-left">View Details</th>
           </tr>
         </thead>
         <tbody>
@@ -107,24 +107,25 @@ function AdminProfile() {
                   View Details
                 </button>
               </td>
-            </tr >
+            </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-
+  
+  
   const renderTransactions = () => {
     const totalAmount = filteredTransactions.reduce((sum, transaction) => {
       const discountAmount = (transaction.totalAmount * transaction.discount) / 100;
       return sum + (transaction.totalAmount - discountAmount);
     }, 0);
-
+  
     return (
       <div className="mt-4 bg-gray-100 p-4 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mt-4">Today's Transaction</h2>
         <div className="flex justify-between items-center mt-4">
-          <h3 className="text-lg font-semibold">Total Amount: ₹ {totalAmount.toFixed(2)}</h3>
+          <h3 className="text-lg font-semibold">Total Amount: ₹{totalAmount.toFixed(2)}</h3>
           <div className="flex items-center">
             <label htmlFor="datePicker" className="mr-2">Select Date:</label>
             <input
@@ -136,15 +137,15 @@ function AdminProfile() {
             />
           </div>
         </div>
-        <table className="min-w-full bg-white border border-gray-300 mt-4 rounded-lg overflow-hidden shadow-md">
+        <table className="min-w-full bg-white border border-gray-300 mt-4 rounded-lg overflow-x-auto">
           <thead className="bg-gradient-to-r from-blue-500 to-blue-700 text-white">
             <tr>
-              <th className="py-2 px-4 border-b">Transaction ID</th>
-              <th className="py-2 px-4 border-b">Patient Name</th>
-              <th className="py-2 px-4 border-b">Doctor Name</th>
-              <th className="py-2 px-4 border-b">Total Amount</th>
-              <th className="py-2 px-4 border-b">Discount</th>
-              <th className="py-2 px-4 border-b">Time</th>
+              <th className="py-2 px-4 border-b text-left">Transaction ID</th>
+              <th className="py-2 px-4 border-b text-left">Patient Name</th>
+              <th className="py-2 px-4 border-b text-left">Doctor Name</th>
+              <th className="py-2 px-4 border-b text-left">Total Amount</th>
+              <th className="py-2 px-4 border-b text-left">Discount</th>
+              <th className="py-2 px-4 border-b text-left">Time</th>
             </tr>
           </thead>
           <tbody>
@@ -167,6 +168,7 @@ function AdminProfile() {
       </div>
     );
   };
+  
 
   if (loading) {
     return <div>Loading...</div>;

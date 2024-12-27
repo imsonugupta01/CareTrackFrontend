@@ -6,7 +6,7 @@ import axios from 'axios';
 const Header = ({ onLogout }) => {
   return (
     <header className="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white p-4 flex justify-between items-center">
-      <h1 className="text-xl font-bold">Doctor Login</h1>
+      <h1 className="text-xl font-bold">Admin Login</h1>
       <button
         className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
         onClick={onLogout}
@@ -19,7 +19,7 @@ const Header = ({ onLogout }) => {
 
 // Main DoctorLogin Component
 function DoctorLogin() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: 'vishalsharma@gmail.com', password: '123456' });
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 

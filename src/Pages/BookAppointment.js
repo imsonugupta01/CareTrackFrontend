@@ -159,35 +159,49 @@ function BookAppointment() {
         </div>
       </header>
 
-      <div className="bg-white shadow-lg rounded-lg max-w-full w-full mt-6 p-6 flex">
-        <div className="flex flex-col flex-1">
-          <div className="text-2xl font-bold text-gray-800 mb-2">{doctor.name}</div>
-          <p className="text-gray-600 mb-1 font-medium">{doctor.specialization}</p>
-          <p className="text-gray-600 italic">{doctor.degree}</p>
-          <p className="text-gray-700 mt-4">{doctor.description}</p>
-          <p className="text-lg font-semibold text-gray-800 mt-4">
-            Consultation Fee: <span className="text-blue-600">₹{doctor.rate}</span>
-          </p>
-          {isDiscountApplicable && (
-            <p className="mt-2 text-sm text-green-600 font-bold">
-              Special Offer: 40% Discount Available on first appointment!
-            </p>
-          )}
-          <button
-            onClick={handleBookAppointment}
-            className="w-full mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition"
-          >
-            Book Appointment
-          </button>
-        </div>
-        <div className="ml-6 flex-shrink-0">
-          <img
-            src={doctor.imageUrl}
-            alt={doctor.name}
-            className="rounded-full w-40 h-40 object-cover border-2 border-blue-500"
-          />
-        </div>
-      </div>
+      <div
+  className="bg-white shadow-lg rounded-lg max-w-full w-full mt-6 p-6 flex flex-col md:flex-row"
+>
+  {/* Doctor Image */}
+  <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6 self-center md:self-start">
+    <img
+      src={doctor.imageUrl}
+      alt={doctor.name}
+      className="rounded-full w-32 h-32 md:w-40 md:h-40 object-cover border-2 border-blue-500"
+    />
+  </div>
+
+  {/* Doctor Details */}
+  <div className="flex flex-col flex-1">
+    <div className="text-2xl font-bold text-gray-800 mb-2 text-center md:text-left">
+      {doctor.name}
+    </div>
+    <p className="text-gray-600 mb-1 font-medium text-center md:text-left">
+      {doctor.specialization}
+    </p>
+    <p className="text-gray-600 italic text-center md:text-left">
+      {doctor.degree}
+    </p>
+    <p className="text-gray-700 mt-4 text-center md:text-left">
+      {doctor.description}
+    </p>
+    <p className="text-lg font-semibold text-gray-800 mt-4 text-center md:text-left">
+      Consultation Fee: <span className="text-blue-600">₹{doctor.rate}</span>
+    </p>
+    {isDiscountApplicable && (
+      <p className="mt-2 text-sm text-green-600 font-bold text-center md:text-left">
+        Special Offer: 40% Discount Available on first appointment!
+      </p>
+    )}
+    <button
+      onClick={handleBookAppointment}
+      className="w-full mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition"
+    >
+      Book Appointment
+    </button>
+  </div>
+</div>
+
 
       {appointmentHistory.length > 0 && (
         <div className="bg-white shadow-lg rounded-lg max-w-full w-full mt-6 p-6">

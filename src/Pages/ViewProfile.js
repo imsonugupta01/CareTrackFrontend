@@ -103,32 +103,20 @@ function ViewProfile() {
           <h2 className="text-xl font-semibold mb-4">Payment History</h2>
           {payments.length > 0 ? (
             <div className="overflow-x-auto">
-              <table className="min-w-full border-collapse border border-gray-200 bg-white">
+              {/* Table for larger screens */}
+              <table className="hidden md:table min-w-full border-collapse border border-gray-200 bg-white">
                 <thead>
                   <tr className="bg-gray-100">
-                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">
-                      Date
-                    </th>
-                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">
-                      Doctor
-                    </th>
-                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">
-                      Total Amount
-                    </th>
-                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">
-                      Discount
-                    </th>
-                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">
-                      Paid
-                    </th>
+                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">Date</th>
+                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">Doctor</th>
+                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">Total Amount</th>
+                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">Discount</th>
+                    <th className="py-3 px-6 text-left text-gray-800 font-medium border-b">Paid</th>
                   </tr>
                 </thead>
                 <tbody>
                   {payments.map((payment) => (
-                    <tr
-                      key={payment._id}
-                      className="hover:bg-gray-50 transition-colors duration-200"
-                    >
+                    <tr key={payment._id} className="hover:bg-gray-50 transition-colors duration-200">
                       <td className="py-3 px-6 border-b">
                         {new Date(payment.date).toLocaleDateString()}
                       </td>
@@ -142,6 +130,32 @@ function ViewProfile() {
                   ))}
                 </tbody>
               </table>
+
+              {/* Cards for mobile view */}
+              <div className="block md:hidden space-y-4">
+                {payments.map((payment) => (
+                  <div
+                    key={payment._id}
+                    className="border border-gray-200 rounded-lg p-4 shadow-sm bg-gradient-to-br from-blue-100 via-white to-gray-50"
+                  >
+                    <p className="text-gray-600">
+                      <strong>Date:</strong> {new Date(payment.date).toLocaleDateString()}
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>Doctor:</strong> {payment.doctorName}
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>Total Amount:</strong> ₹{payment.totalAmount}
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>Discount:</strong> {payment.discount}%
+                    </p>
+                    <p className="text-gray-600">
+                      <strong>Paid:</strong> ₹{((payment.totalAmount * (100 - payment.discount)) / 100).toFixed(2)}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="text-gray-600 text-center">No payments found for this patient.</div>

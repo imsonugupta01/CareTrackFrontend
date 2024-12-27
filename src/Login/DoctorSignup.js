@@ -63,7 +63,7 @@ function DoctorSignup() {
         <button
          onClick={() => navigate("/adminProfile")}
 
-          className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-gray-200 focus:outline-none shadow-md"
+          className="bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition text-white duration-200"
         >
           Home
         </button>
